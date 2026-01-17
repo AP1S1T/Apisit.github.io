@@ -1,10 +1,197 @@
 <!DOCTYPE html>
-<html>
+<html lang="th">
 <head>
-    <title>My Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic CV | Your Name</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lora:italic,wght@0,400;1,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --text-color: #333;
+            --light-grey: #f8f9fa;
+            --accent-color: #0056b3;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #fff;
+        }
+
+        header {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .header-info h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            letter-spacing: -0.5px;
+        }
+
+        .contact-info {
+            text-align: right;
+            font-size: 0.9rem;
+        }
+
+        .contact-info a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        section {
+            margin-bottom: 35px;
+        }
+
+        h2 {
+            font-family: 'Lora', serif;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .cv-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .cv-content {
+            flex: 1;
+        }
+
+        .cv-date {
+            min-width: 150px;
+            text-align: right;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .institution {
+            font-weight: 700;
+            display: block;
+        }
+
+        .degree, .role {
+            font-style: italic;
+            color: #555;
+        }
+
+        ul.publications {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul.publications li {
+            margin-bottom: 12px;
+            padding-left: 15px;
+            border-left: 3px solid var(--light-grey);
+        }
+
+        .author-me {
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
+        @media (max-width: 600px) {
+            header { flex-direction: column; align-items: flex-start; }
+            .contact-info { text-align: left; margin-top: 10px; }
+            .cv-item { flex-direction: column; }
+            .cv-date { text-align: left; margin-bottom: 5px; }
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to my website!</h1>
-    <p>This website built on GitHub Pages</p>
+
+    <header>
+        <div class="header-info">
+            <h1>ชื่อ-นามสกุล ของคุณ</h1>
+            <p>Candidate หรือตำแหน่งวิชาการ (เช่น Ph.D. Candidate in Computer Science)</p>
+        </div>
+        <div class="contact-info">
+            Email: <a href="mailto:yourname@email.com">yourname@university.edu</a><br>
+            Website: <a href="#">www.yourwebsite.com</a><br>
+            Location: Bangkok, Thailand
+        </div>
+    </header>
+
+    <section id="education">
+        <h2>Education</h2>
+        <div class="cv-item">
+            <div class="cv-content">
+                <span class="institution">University Name</span>
+                <span class="degree">Ph.D. in Subject Name</span>
+                <p>Thesis: Title of your amazing research work</p>
+            </div>
+            <div class="cv-date">2021 – Present</div>
+        </div>
+        <div class="cv-item">
+            <div class="cv-content">
+                <span class="institution">University Name</span>
+                <span class="degree">M.Sc. in Subject Name</span>
+            </div>
+            <div class="cv-date">2018 – 2020</div>
+        </div>
+    </section>
+
+    <section id="research-interests">
+        <h2>Research Interests</h2>
+        <p>Artificial Intelligence, Machine Learning, Data Privacy, and Human-Computer Interaction.</p>
+    </section>
+
+    <section id="publications">
+        <h2>Selected Publications</h2>
+        <ul class="publications">
+            <li>
+                <strong>Your Name</strong>, Co-author A., & Co-author B. (2024). 
+                "Title of the Research Paper." 
+                <em>Journal of Academic Excellence</em>, 12(3), 145-160.
+            </li>
+            <li>
+                Co-author C. & <strong>Your Name</strong>. (2023). 
+                "Another Interesting Research Finding." 
+                <em>International Conference on Science</em>.
+            </li>
+        </ul>
+    </section>
+
+    <section id="experience">
+        <h2>Academic Experience</h2>
+        <div class="cv-item">
+            <div class="cv-content">
+                <span class="institution">Research Laboratory X</span>
+                <span class="role">Graduate Research Assistant</span>
+            </div>
+            <div class="cv-date">2021 – Present</div>
+        </div>
+        <div class="cv-item">
+            <div class="cv-content">
+                <span class="institution">University Department</span>
+                <span class="role">Teaching Assistant (Course Name)</span>
+            </div>
+            <div class="cv-date">2019 – 2020</div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <p><strong>Programming:</strong> Python, R, MATLAB, LaTeX</p>
+        <p><strong>Languages:</strong> Thai (Native), English (Fluent - IELTS 8.0)</p>
+    </section>
+
 </body>
 </html>
