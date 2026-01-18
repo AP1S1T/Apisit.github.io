@@ -3,40 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Academic CV | Your Name</title>
+    <title>Academic CV | Apisit Robjanghvad</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lora:italic,wght@0,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
     <style>
         :root {
             --primary-color: #2c3e50;
             --text-color: #333;
             --light-grey: #f8f9fa;
             --accent-color: #0056b3;
+            --nav-bg: rgba(255, 255, 255, 0.95);
+        }
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            line-height: 1.6;
+            line-height: 1.7;
             color: var(--text-color);
-            max-width: 850px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 0 20px 100px 20px;
             background-color: #fff;
         }
 
+        /* Navigation Bar */
+        nav {
+            position: sticky;
+            top: 0;
+            background: var(--nav-bg);
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
         header {
+            padding: 60px 0 30px 0;
             border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
+            align-items: center;
+        }
+
+        /* Profile Layout */
+        .profile-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .profile-img {
+            width: 140px;
+            height: auto; /* ปรับเป็น auto เพื่อให้คงสัดส่วนรูปเดิมไว้ */
+            border-radius: 0; /* เปลี่ยนเป็น 0 เพื่อให้เป็นมุมเหลี่ยม */
+            object-fit: cover;
+            border: 4px solid var(--light-grey);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
         .header-info h1 {
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: var(--primary-color);
-            letter-spacing: -0.5px;
+            font-family: 'Lora', serif;
+        }
+
+        .header-info p {
+            margin: 5px 0 0 0;
+            font-weight: 600;
+            color: #666;
         }
 
         .contact-info {
@@ -50,23 +108,26 @@
         }
 
         section {
-            margin-bottom: 35px;
+            padding-top: 80px; 
+            margin-top: -40px;
+            margin-bottom: 50px;
         }
 
         h2 {
             font-family: 'Lora', serif;
             text-transform: uppercase;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             border-bottom: 1px solid #ddd;
-            padding-bottom: 5px;
-            margin-bottom: 15px;
+            padding-bottom: 8px;
+            margin-bottom: 25px;
             color: var(--primary-color);
+            letter-spacing: 1px;
         }
 
         .cv-item {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .cv-content {
@@ -78,17 +139,20 @@
             text-align: right;
             font-weight: 600;
             font-size: 0.9rem;
-            color: #666;
+            color: #777;
         }
 
         .institution {
             font-weight: 700;
             display: block;
+            font-size: 1.1rem;
         }
 
         .degree, .role {
             font-style: italic;
             color: #555;
+            display: block;
+            margin-bottom: 5px;
         }
 
         ul.publications {
@@ -97,101 +161,409 @@
         }
 
         ul.publications li {
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             padding-left: 15px;
-            border-left: 3px solid var(--light-grey);
+            border-left: 2px solid var(--accent-color);
         }
 
-        .author-me {
-            text-decoration: underline;
-            font-weight: 600;
+        .btn-download {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 16px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            transition: background 0.3s;
         }
 
-        @media (max-width: 600px) {
-            header { flex-direction: column; align-items: flex-start; }
-            .contact-info { text-align: left; margin-top: 10px; }
+        .btn-download:hover {
+            background-color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            nav { gap: 10px; flex-wrap: wrap; }
+            header { flex-direction: column; text-align: center; }
+            .profile-wrapper { flex-direction: column; gap: 15px; }
+            .contact-info { text-align: center; margin-top: 25px; }
             .cv-item { flex-direction: column; }
-            .cv-date { text-align: left; margin-bottom: 5px; }
+            .cv-date { text-align: left; margin-bottom: 10px; }
+            
         }
+
+    /* Container หลักของ Timeline */
+.timeline {
+    position: relative;
+    border-left: 4px solid #444; /* เส้นแนวตั้งให้หนาขึ้นและเข้มขึ้น */
+    margin: 20px 0 20px 20px;
+    padding: 10px 0;
+}
+
+/* จุดวงกลมตรงกลางเส้น */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -12px; /* จัดกึ่งกลางบนเส้น 4px */
+    top: 15px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: white;
+    border: 3px solid #8e1a4a; /* สีแดงเข้มตามรูปตัวอย่าง */
+    z-index: 2;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+    padding-left: 35px;
+}
+
+/* กล่องหัวข้อ (Institution) ที่มีติ่งแหลมๆ และเงา */
+.institution-box {
+    display: inline-flex;
+    align-items: center;
+    background: #fdfdfd;
+    padding: 8px 15px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border: 1px solid #eee;
+    position: relative;
+}
+
+/* สร้างติ่งแหลมชี้ไปที่เส้น Timeline */
+.institution-box::after {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #eee transparent transparent;
+}
+
+.timeline-content .institution {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+/* จัดวางวันที่ให้อยู่ด้านหลังสถาบัน */
+.timeline-date {
+    background: #fce4ec; /* พื้นหลังชมพูอ่อน */
+    color: #8e1a4a;      /* ตัวอักษรแดงเข้ม */
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+.timeline-content .degree {
+    display: block;
+    margin-top: 8px;
+    font-weight: 600;
+    color: #444;
+}
+
+/* Container สำหรับกลุ่มทักษะ */
+.skills-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.skill-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.skill-category {
+    font-weight: 700;
+    min-width: 120px;
+    color: var(--primary-color);
+    font-size: 0.95rem;
+}
+
+/* ตกแต่งตัว Badge/Chip */
+.skill-badge {
+    background: #f0f2f5;
+    color: #444;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+/* เอฟเฟกต์เมื่อเอาเมาส์ไปชี้ */
+.skill-badge:hover {
+    background: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+/* เน้นสีพิเศษสำหรับ Programming (เพราะคุณเน้นด้าน AI) */
+.badge-highlight {
+    background: #e3f2fd;
+    color: #0d47a1;
+    border-color: #bbdefb;
+}
+
+.contact-info {
+    text-align: right;
+    font-size: 0.95rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* เว้นระยะห่างระหว่างแต่ละช่องทาง */
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* ชิดขวาตาม Header เดิม */
+    gap: 10px;
+    color: #555;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-item i {
+    color: var(--primary-color); /* สีไอคอนตามธีมหลัก */
+    width: 20px; /* บังคับขนาดไอคอนให้เท่ากันทุกอัน */
+    text-align: center;
+}
+
+.contact-item:hover {
+    color: var(--accent-color);
+}
+.contact-logos {
+    display: flex;
+    justify-content: flex-end; /* จัดไอคอนไปทางขวา */
+    gap: 15px; /* ระยะห่างระหว่างไอคอน */
+    margin-top: 10px;
+}
+
+.logo-link {
+    font-size: 1.8rem; /* ขนาดไอคอน */
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.logo-link:hover {
+    color: var(--accent-color);
+    transform: translateY(-3px); /* ส่ายขึ้นเล็กน้อยเวลาชี้ */
+}
+
+/* สีเฉพาะแบรนด์ (เลือกใส่หรือไม่ก็ได้ครับ) */
+.fa-linkedin:hover { color: #0077b5; }
+.fa-github:hover { color: #333; }
+.ai-researchgate:hover { color: #00ccbb; }
+.ai-google-scholar:hover { color: #4285f4; }
+.fa-envelope:hover { color: #ea4335; }
+
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="header-info">
-            <h1>Apisit Robjanghvad</h1>
-            <p>M.Eng (Geotechnical Engineering)</p>
-        </div>
-        <div class="contact-info">
-            Email: <a href="mailto:yourname@email.com">yourname@university.edu</a><br>
-            Website: <a href="#">www.yourwebsite.com</a><br>
-            Location: Bangkok, Thailand
-        </div>
-    </header>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#publications">Publications</a>
+        <a href="#experience">Experience</a>
+        <a href="#honors-awards">Honors & Awards</a>
+        <a href="#skills">Skills</a>
+    </nav>
 
-    <section id="education">
-        <h2>Education</h2>
-        <div class="cv-item">
-            <div class="cv-content">
-                <span class="institution">University Name</span>
-                <span class="degree">Ph.D. in Subject Name</span>
-                <p>Thesis: Title of your amazing research work</p>
+    <header id="about">
+        <div class="profile-wrapper">
+            <img src="Photo student.jpg" alt="Apisit Robjanghvad" class="profile-img">
+            
+            <div class="header-info">
+                <h1>Apisit Robjanghvad</h1>
+                <p>M.Eng (Geotechnical Engineering)</p>
+                <a href="#" class="btn-download">Download Full CV (PDF)</a>
             </div>
-            <div class="cv-date">2021 – Present</div>
         </div>
-        <div class="cv-item">
-            <div class="cv-content">
-                <span class="institution">University Name</span>
-                <span class="degree">M.Sc. in Subject Name</span>
-            </div>
-            <div class="cv-date">2018 – 2020</div>
-        </div>
-    </section>
+    <div class="contact-info">
+    <div style="margin-bottom: 5px; font-weight: 600;">Bangkok, Thailand</div>
+    <div class="contact-logos">
+        <a href="mailto:apisit.robja@mail.kmutt.ac.th" class="logo-link" title="Email">
+            <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/apisit-robjanghvad" target="_blank" class="logo-link" title="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/AP1S1T" target="_blank" class="logo-link" title="GitHub">
+            <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.researchgate.net/profile/Apisit-Robjanghvad?ev=hdr_xprf" target="_blank" class="logo-link" title="ResearchGate">
+            <i class="ai ai-researchgate"></i>
+        </a>
+    </div>
+</div>
+    </header>
 
     <section id="research-interests">
         <h2>Research Interests</h2>
-        <p>Artificial Intelligence, Machine Learning, Data Privacy, and Human-Computer Interaction.</p>
+        <ul style="list-style-type: disc; margin-left: 20px;">
+            <li>Soil Mechanics</li>
+            <li>Numerical Modeling in Geotechnics</li>
+            <li>AI in Geotechnical Engineering</li>
+            <li>Physics-Informed Machine Learning</li>
+            <li>Data-driven and physics-informed Neural Networks for solving partial differential equations</li>
+            <li>Computational Geomechanics</li>
+        </ul>
     </section>
+
+<section id="education">
+    <h2>Education</h2>
+    <div class="timeline">
+        
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <div class="institution-box">
+                    <span class="institution">King Mongkut's University of Technology Thonburi (KMUTT)</span>
+                    <span class="timeline-date">2025 – Present</span>
+                </div>
+                <span class="degree">Master of Engineering (Geotechnical Engineering)</span>
+                <p style="margin-top: 5px; font-size: 0.9rem; color: #666; padding-left: 5px;">
+                    <strong>Thesis:</strong> Physics-Informed Neural Networks for Modeling the Behavior of soil plasticity
+                </p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <div class="institution-box">
+                    <span class="institution">King Mongkut's University of Technology Thonburi (KMUTT)</span>
+                    <span class="timeline-date">2021 – 2025</span>
+                </div>
+                <span class="degree">Bachelor of Engineering (Civil Engineering)</span>
+                <p style="margin-top: 2px; color: #8e1a4a; font-weight: 600; font-size: 0.85rem; padding-left: 5px;">
+                    First-class honors
+                </p>
+            </div>
+        </div>
+
+</section>
+
+    </div>
+</section>
 
     <section id="publications">
         <h2>Selected Publications</h2>
         <ul class="publications">
             <li>
-                <strong>Your Name</strong>, Co-author A., & Co-author B. (2024). 
-                "Title of the Research Paper." 
-                <em>Journal of Academic Excellence</em>, 12(3), 145-160.
-            </li>
-            <li>
-                Co-author C. & <strong>Your Name</strong>. (2023). 
-                "Another Interesting Research Finding." 
-                <em>International Conference on Science</em>.
             </li>
         </ul>
     </section>
 
-    <section id="experience">
-        <h2>Academic Experience</h2>
-        <div class="cv-item">
-            <div class="cv-content">
-                <span class="institution">Research Laboratory X</span>
-                <span class="role">Graduate Research Assistant</span>
+<section id="experience">
+    <h2>Academic & Professional Experience</h2>
+    <div class="timeline">
+        
+        <div class="timeline-item">
+            <span class="timeline-date">2025</span>
+            <div class="timeline-content">
+                <span class="institution">Shibaura Institute of Technology</span>
+                <span class="role">Global Project Based Learning (gPBL)</span>
+                <p style="font-size: 0.9rem; color: #666; margin-top: 5px;">
+                    International collaboration on engineering problem-solving and innovative design.
+                </p>
             </div>
-            <div class="cv-date">2021 – Present</div>
         </div>
-        <div class="cv-item">
-            <div class="cv-content">
-                <span class="institution">University Department</span>
-                <span class="role">Teaching Assistant (Course Name)</span>
-            </div>
-            <div class="cv-date">2019 – 2020</div>
-        </div>
-    </section>
 
-    <section id="skills">
-        <h2>Skills</h2>
-        <p><strong>Programming:</strong> Python, R, MATLAB, LaTeX</p>
-        <p><strong>Languages:</strong> Thai (Native), English (Fluent - IELTS 8.0)</p>
+        <div class="timeline-item">
+            <span class="timeline-date">2024</span>
+            <div class="timeline-content">
+                <span class="institution">Thai Konoike Corporation Ltd.</span>
+                <span class="role">Site Engineer Intern</span>
+                <p style="font-size: 0.9rem; color: #666; margin-top: 5px;">
+                    Assisted in site supervision, construction quality control.
+                </p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <span class="timeline-date">2022</span>
+            <div class="timeline-content">
+                <span class="institution">Thai Obayashi Training Center</span>
+                <span class="role">Civil engineering workshop</span>
+                <p style="font-size: 0.9rem; color: #666; margin-top: 5px;">
+                    Workshop training in civil engineering takes place at the Thai Obayashi Training Center.
+                </p>
+            </div>
+        </div>
+
+    </div>
     </section>
+    <section id="honors-awards">
+    <h2>Honors & Awards</h2>
+    <div class="timeline">
+        
+        <div class="timeline-item">
+            <span class="timeline-date">Sep 2025</span>
+            <div class="timeline-content">
+                <span class="institution">Civil Engineering Department</span>
+                <span class="role">First-Class Honours (GPAX: 3.62)</span>
+                <p style="font-size: 0.9rem; color: #666; margin-top: 5px;">
+                    Recognized for outstanding academic excellence throughout the undergraduate program.
+                </p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <span class="timeline-date">Jul 2025</span>
+            <div class="timeline-content">
+                <span class="institution">King Mongkut's University of Technology</span>
+                <span class="role">Petchra Pra Jom Klao Master Scholarship</span>
+                <p style="font-size: 0.9rem; color: #666; margin-top: 5px;">
+                    Awarded a full scholarship for a Master's degree in engineering, covering tuition fees and monthly stipend. This competitive scholarship supports outstanding academic performance and research potential.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<section id="skills">
+    <h2>Technical Skills</h2>
+    <div class="skills-container">
+        
+        <div class="skill-group">
+            <span class="skill-category">Engineering Software:</span>
+            <span class="skill-badge">PLAXIS 2D/3D</span>
+            <span class="skill-badge">ABAQUS</span>
+            <span class="skill-badge">GeoStudio (SLOPE/W)</span>
+            <span class="skill-badge">SAP2000</span>
+            <span class="skill-badge">AutoCAD</span>
+            <span class="skill-badge">REVIT</span>
+        </div>
+
+        <div class="skill-group">
+            <span class="skill-category">Programming:</span>
+            <span class="skill-badge badge-highlight">Python (PyTorch/TensorFlow)</span>
+            <span class="skill-badge badge-highlight">MATLAB</span>
+            <span class="skill-badge badge-highlight">C++</span>
+        </div>
+
+        <div class="skill-group">
+            <span class="skill-category">Languages:</span>
+            <span class="skill-badge">Thai (Native)</span>
+            <span class="skill-badge">English (Professional Working Proficiency)</span>
+        </div>
+
+    </div>
+</section>
 
 </body>
 </html>
